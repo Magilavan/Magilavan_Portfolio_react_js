@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from '@emailjs/browser';
 import "./ContactForm.css";
 
 function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState({ loading: false, ok: null, msg: "" });
+
+  useEffect(() => {
+    emailjs.init('b4kPJ13JdlHoWwSqz');
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,20 +45,19 @@ function ContactForm() {
 
     try {
       await emailjs.send(
-        'service_portfolio',
-        'template_contact',
+        'service_njrbgpg',
+        'template_b157ppr',
         {
           from_name: form.name,
           from_email: form.email,
           message: form.message,
-        },
-        'YOUR_PUBLIC_KEY'
+        }
       );
       
       setForm({ name: "", email: "", message: "" });
       setStatus({ loading: false, ok: true, msg: "Message sent successfully!" });
     } catch (error) {
-      console.error("Email error:", error);
+      console.error('EmailJS error:', error);
       setStatus({ loading: false, ok: false, msg: "Failed to send message. Please try again." });
     }
   };

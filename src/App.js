@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RouteDebugger from './components/RouteDebugger';
 import Home from './pages/Home';
 import SkillsPage from './pages/SkillsPage';
 import ProjectsPage from './pages/ProjectsPage';
@@ -17,7 +16,6 @@ function AppContent() {
   
   return (
     <div className="App">
-      <RouteDebugger />
       <Header />
       <main key={location.pathname}>
         <Routes location={location}>

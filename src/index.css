@@ -7,6 +7,7 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -18,18 +19,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Responsive Typography */
 @media (max-width: 768px) {
   html {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
 @media (max-width: 480px) {
   html {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -52,6 +54,7 @@ body {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /* Responsive containers */
@@ -64,12 +67,27 @@ img {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 15px;
+    padding: 0 16px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 10px;
+    padding: 0 12px;
   }
+}
+
+/* Better touch targets for mobile */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent text selection on buttons */
+button {
+  -webkit-user-select: none;
+  user-select: none;
 }

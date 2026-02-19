@@ -27,7 +27,6 @@ function ContactForm() {
     return null;
   };
 
-  // <-- Updated submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, ok: null, msg: "" });
@@ -38,10 +37,9 @@ function ContactForm() {
       return;
     }
 
-    // Build payload with the field names expected by the /api/contact serverless function
     const payload = {
-      from_name: form.name,
-      reply_to: form.email,
+      name: form.name,
+      email: form.email,
       message: form.message
     };
 
@@ -52,28 +50,19 @@ function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      // Parse response safely (EmailJS or server may return empty or plain text)
-      const text = await res.text();
-      let data;
-      try { data = text ? JSON.parse(text) : null; } catch (parseErr) { data = text; }
+      const data = await res.json();
 
       if (res.ok) {
         setForm({ name: "", email: "", message: "" });
         setStatus({ loading: false, ok: true, msg: "Message sent successfully!" });
-        return;
+      } else {
+        setStatus({ loading: false, ok: false, msg: data.error || "Failed to send message" });
       }
-
-      // If not ok, show server-provided message (if any) or a fallback
-      const serverMsg = data?.error || data?.details || data || "Failed to send message";
-      setStatus({ loading: false, ok: false, msg: serverMsg });
-      return;
     } catch (error) {
       console.error("Network error:", error);
       setStatus({ loading: false, ok: false, msg: "Network error. Please try again." });
-      return;
     }
   };
-  // <-- end updated submit handler
 
   return (
     <section className="contact" id="contact">

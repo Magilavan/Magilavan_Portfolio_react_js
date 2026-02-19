@@ -1,3 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://magilavan-protfolio-react-3dtu0tz6o-magilavans-projects.vercel.app/sitemap.xml

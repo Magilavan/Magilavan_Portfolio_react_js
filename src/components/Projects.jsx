@@ -97,14 +97,12 @@ function ProjectCard({ project }) {
               GitHub
             </a>
           ) : (
-            <a
-              href="#"
+            <button
               className="btn-primary disabled"
-              aria-disabled="true"
-              onClick={(e) => e.preventDefault()}
+              disabled
             >
               GitHub
-            </a>
+            </button>
           )}
         </div>
       </div>

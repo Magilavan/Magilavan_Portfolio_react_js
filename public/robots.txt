@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://magilavan-protfolio-react-3dtu0tz6o-magilavans-projects.vercel.app/sitemap.xml
+Sitemap: https://magilavan-protfolio-react-64jygvb1z-magilavans-projects.vercel.app/sitemap.xml
